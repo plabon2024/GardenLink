@@ -13,7 +13,7 @@ const ActiveGardeners = () => {
   }, []);
 
   return (
-    <div className=" lg:bg-[url('/images/3.png')]  bg-contain bg-left-top bg-no-repeat ">
+    <div className="md:flex lg:bg-[url('/images/3.png')]  bg-contain bg-left-top bg-no-repeat ">
       <h2 className="text-2xl font-bold mb-4 md text-center">
         Active Gardeners
       </h2>
