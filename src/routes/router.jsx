@@ -9,6 +9,7 @@ import PrivateRoute from "../components/PrivateRoute";
 import ExploreGardeners from "../pages/ExploreGardeners";
 import BrowseTips from "../pages/BrowseTips";
 import TipDetails from "../pages/TipDetails";
+import Mytips from "../pages/Mytips";
 
 const router = createBrowserRouter([
   {
@@ -21,9 +22,19 @@ const router = createBrowserRouter([
       { path: "/gardeners", Component: Gardeners },
       { path: "/allgardeners", Component: ExploreGardeners },
       { path: "/alltips", Component: BrowseTips },
-      { path: "/tipdetails/:id",
-        loader: ({ params }) =>fetch(`http://localhost:3000/tipdetails/${params.id}`),
-         Component: TipDetails },
+      { path: "/mytips", element:<PrivateRoute>
+        <Mytips></Mytips>
+      </PrivateRoute> },
+      {
+        path: "/tipdetails/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/tipdetails/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <TipDetails></TipDetails>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "/tip",
         element: (

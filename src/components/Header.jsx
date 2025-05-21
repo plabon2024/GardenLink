@@ -54,7 +54,7 @@ const Header = () => {
                 <NavLink to="/tip" className="btn hover:bg-black hover:text-white"> Share a Garden Tip</NavLink>
               </li>
               <li >
-                <NavLink to="/profile" className="btn hover:bg-black hover:text-white">My Tips </NavLink>
+                <NavLink to="/mytips" className="btn hover:bg-black hover:text-white">My Tips </NavLink>
               </li>
               <li >
                 <NavLink to="/login" className="btn hover:bg-black hover:text-white">Login/Signup </NavLink>
@@ -76,15 +76,18 @@ const Header = () => {
             <li >
               <NavLink to="/alltips"className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">Browse Tips </NavLink>
             </li>
+            {!user ? (   <li >
+              <NavLink to="/login"className=" btn  outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">Login/Signup </NavLink>
+            </li>):(<>
             <li >
-              <NavLink to="/profile"className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">My Tips </NavLink>
+              <NavLink to="/mytips"className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">My Tips </NavLink>
             </li>
             <li >
               <NavLink to="/tip"className=" btn outline-none  hover:bg-black hover:text-white hover:border-none rounded-sm"> Share a Garden Tip</NavLink>
             </li>
-            <li >
-              <NavLink to="/login"className=" btn  outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">Login/Signup </NavLink>
-            </li>
+            </> )}
+           
+         
           </ul>
         </div>
         <div className="navbar-end">
@@ -123,7 +126,7 @@ const Header = () => {
                 className="menu menu-sm dropdown-content z-10   shadow bg-base-100 rounded-box w-fit"
               >
                 <li className=" btn outlineblac hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
-                  <NavLink onClick={handlesignOutUser}>Logout</NavLink>
+                  <button onClick={handlesignOutUser}>Logout</button>
                 </li>
               </ul>
             </div>

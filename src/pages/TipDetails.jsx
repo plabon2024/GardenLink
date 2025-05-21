@@ -8,7 +8,7 @@ const TipDetails = () => {
   return (
     <div>
       <div className="mx-auto flex justify-center items-center h-[calc(100vh-300px)]">
-        <div className=" backdrop-blur-md border border-black shadow-lg rounded-xl overflow-hidden max-w-fit">
+        <div className="p-5 backdrop-blur-md border border-black shadow-lg rounded-xl overflow-hidden max-w-fit">
           <img src={image} alt={title} className="w-full h-64 object-contain" />
 
           <div className="p-6 space-y-4 text-black">
