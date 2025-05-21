@@ -41,22 +41,24 @@ const Header = () => {
               tabIndex={0}
               className="menu gap-3 menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-white  backdrop-blur-md"
             >
-              <li className="btn">
-                <NavLink to="/">Home</NavLink>
+              <li >
+                <NavLink to="/" className="btn hover:bg-black hover:text-white">Home</NavLink>
               </li>
-              <li className="btn">
-                <NavLink to="/profile">Explore Gardeners </NavLink>
+              <li >
+                <NavLink to="/allgardeners" className="btn hover:bg-black hover:text-white">Explore Gardeners </NavLink>
               </li>
-              <li className="btn">
-                <NavLink to="/tip"> Share a Garden Tip</NavLink>
+              <li >
+                <NavLink to="/alltips" className="btn hover:bg-black hover:text-white">Browse Tips </NavLink>
               </li>
-              <li className="btn">
-                <NavLink to="/profile">My Tips </NavLink>
+              <li >
+                <NavLink to="/tip" className="btn hover:bg-black hover:text-white"> Share a Garden Tip</NavLink>
               </li>
-              <li className="btn">
-                <NavLink to="/login">Login/Signup </NavLink>
+              <li >
+                <NavLink to="/profile" className="btn hover:bg-black hover:text-white">My Tips </NavLink>
               </li>
-          
+              <li >
+                <NavLink to="/login" className="btn hover:bg-black hover:text-white">Login/Signup </NavLink>
+              </li>
             </ul>
           </div>
           <h1>
@@ -65,20 +67,23 @@ const Header = () => {
         </div>
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 gap-2">
-            <li className=" btn outline-none hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm ">
-              <NavLink to="/">Home</NavLink>
+            <li >
+              <NavLink to="/"className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm ">Home</NavLink>
             </li>
-            <li className=" btn outline-none hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
-              <NavLink to="/profile">Explore Gardeners </NavLink>
+            <li >
+              <NavLink to="/allgardeners"className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">Explore Gardeners </NavLink>
             </li>
-            <li className=" btn outline-none hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
-              <NavLink to="/profile">My Tips </NavLink>
+            <li >
+              <NavLink to="/alltips"className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">Browse Tips </NavLink>
             </li>
-            <li className=" btn outline-none  hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
-              <NavLink to="/tip"> Share a Garden Tip</NavLink>
+            <li >
+              <NavLink to="/profile"className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">My Tips </NavLink>
             </li>
-            <li className=" btn  outline-none hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
-              <NavLink to="/login">Login/Signup </NavLink>
+            <li >
+              <NavLink to="/tip"className=" btn outline-none  hover:bg-black hover:text-white hover:border-none rounded-sm"> Share a Garden Tip</NavLink>
+            </li>
+            <li >
+              <NavLink to="/login"className=" btn  outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">Login/Signup </NavLink>
             </li>
           </ul>
         </div>

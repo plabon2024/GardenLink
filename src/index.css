@@ -18,6 +18,12 @@
 * {
   scroll-behavior: smooth;
 }
+  a.active {
+    @apply border-none;
+    @apply text-white;
+    @apply bg-black;
+ 
+  }
 .swiper-button-next,
 .swiper-button-prev {
   background-color: white;

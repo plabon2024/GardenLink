@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const TrendingTips = () => {
+  const [tips, setTips] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/tip")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setTips(data);
+      });
+  }, []);
   return (
     <div>
-      <div className="card card-dash bg-base-100 w-96 container mx-auto ">
-        <div className="card-body">
-          <h2 className="card-title">Card Title</h2>
-          <p>
-            A card component has a figure, a body part, and inside body there
-            are title and actions parts
-          </p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+      {tips.map((tip) => (
+        <div className="flex bg-slate-200 p-3 w-fit container mx-auto ">
+          <div className="avatar">
+            <div className="w-24 rounded">
+              <img src={tip.image} />
+            </div>
+          </div>
+          <div className="card-body">
+            <h2 className="card-title">{tip.title}</h2>
+            <p>{tip.category}</p>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };

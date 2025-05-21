@@ -5,24 +5,34 @@ import Login from "../pages/Login";
 import Singnup from "../pages/Signup";
 import Gardeners from "../components/Gardeners";
 import Tipinput from "../pages/TipInput";
+import PrivateRoute from "../components/PrivateRoute";
+import ExploreGardeners from "../pages/ExploreGardeners";
+import BrowseTips from "../pages/BrowseTips";
+import TipDetails from "../pages/TipDetails";
 
 const router = createBrowserRouter([
-
   {
     path: "/",
     Component: MainLayout,
     children: [
       { index: true, Component: Home },
-      {path:'/login',Component:Login},
-      {path:'/signup',Component:Singnup},
-      {path:'/gardeners',Component:Gardeners},
-      {path:'/tip',Component:Tipinput},
-     
-   
-
-    ]
+      { path: "/login", Component: Login },
+      { path: "/signup", Component: Singnup },
+      { path: "/gardeners", Component: Gardeners },
+      { path: "/allgardeners", Component: ExploreGardeners },
+      { path: "/alltips", Component: BrowseTips },
+      { path: "/tipdetails/:id",
+        loader: ({ params }) =>fetch(`http://localhost:3000/tipdetails/${params.id}`),
+         Component: TipDetails },
+      {
+        path: "/tip",
+        element: (
+          <PrivateRoute>
+            <Tipinput></Tipinput>
+          </PrivateRoute>
+        ),
+      },
+    ],
   },
-
-
 ]);
-export default router
+export default router;
