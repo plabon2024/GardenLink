@@ -64,7 +64,7 @@ const Login = () => {
   }, [user, navigate, location.state]);
 
   return (
-    <section className="min-h-[calc(100vh-411px)]  grid text-center items-center p-8">
+    <section className="h- min-h-[calc(100vh-411px)]  grid text-center items-center p-8">
       <div className="w-full max-w-md mx-auto text-left">
         <h2 className="text-3xl font-bold mb-2 text-blue-800">Sign In</h2>
         <p className="mb-10 text-gray-600 text-[18px]">

@@ -17,7 +17,7 @@ const Header = () => {
   };
   return (
     <div>
-      <div className="navbar bg-primary shadow-sm">
+      <div className="navbar bg-primary shadow-sm ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -56,33 +56,30 @@ const Header = () => {
               <li className="btn">
                 <NavLink to="/login">Login/Signup </NavLink>
               </li>
-              <li className="btn">
-                <NavLink to="/installedApps">InstalledApps</NavLink>
-              </li>
+          
             </ul>
           </div>
-          <h1 className="md:text-xl font-extrabold uppercase text-sm">
-            gardening
+          <h1>
+            <img src="/images/logo.png" alt="" className="h-15 w-auto" />
           </h1>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 gap-2">
-            <li className=" btn outlineblac hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm ">
+            <li className=" btn outline-none hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm ">
               <NavLink to="/">Home</NavLink>
             </li>
-            <li className=" btn outlineblac hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
+            <li className=" btn outline-none hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
               <NavLink to="/profile">Explore Gardeners </NavLink>
             </li>
-            <li className=" btn outlineblac hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
+            <li className=" btn outline-none hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
               <NavLink to="/profile">My Tips </NavLink>
             </li>
-            <li className=" btn outlineblac hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
+            <li className=" btn outline-none  hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
               <NavLink to="/tip"> Share a Garden Tip</NavLink>
             </li>
-            <li className=" btn outlineblac hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
+            <li className=" btn  outline-none hover:bg-black hover:text-white hover:border-none active:bg-black active:text-white rounded-sm">
               <NavLink to="/login">Login/Signup </NavLink>
             </li>
-            
           </ul>
         </div>
         <div className="navbar-end">
