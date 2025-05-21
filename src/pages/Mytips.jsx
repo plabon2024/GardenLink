@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
+import { Link } from "react-router";
+import { FaEye } from "react-icons/fa";
 
 const Mytips = () => {
   const { user } = useContext(AuthContext);

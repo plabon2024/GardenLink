@@ -5,9 +5,11 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 import { RiTwitterXFill } from "react-icons/ri";
 
+
 const Footer = () => {
   return (
-    <div>
+    <>
+  
       <footer className="container mx-auto flex flex-col-reverse lg:flex-row justify-between md:px-0 px-5 py-20">
         <aside className="space-y-5 my-10 lg:my-0 flex justify-between container mx-auto lg:flex-row flex-col">
           <aside>
@@ -66,7 +68,7 @@ const Footer = () => {
           </aside>
         </aside>
       </footer>
-    </div>
+    </>
   );
 };
 

@@ -22,9 +22,14 @@ const router = createBrowserRouter([
       { path: "/gardeners", Component: Gardeners },
       { path: "/allgardeners", Component: ExploreGardeners },
       { path: "/alltips", Component: BrowseTips },
-      { path: "/mytips", element:<PrivateRoute>
-        <Mytips></Mytips>
-      </PrivateRoute> },
+      {
+        path: "/mytips",
+        element: (
+          <PrivateRoute>
+            <Mytips></Mytips>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "/tipdetails/:id",
         loader: ({ params }) =>
