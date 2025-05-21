@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCmwtxbSHrNJUXGQ7LVkW_1Qhujm3wJrT4",
-  authDomain: "gardening-community-4f424.firebaseapp.com",
-  projectId: "gardening-community-4f424",
-  storageBucket: "gardening-community-4f424.firebasestorage.app",
-  messagingSenderId: "150245594480",
-  appId: "1:150245594480:web:1528dabbf9d3d5e32cebb5",
+  apiKey:import.meta.env.VITE_apiKey ,
+  authDomain:import.meta.env.VITE_authDomain ,
+  projectId:import.meta.env.VITE_projectId ,
+  storageBucket:import.meta.env.VITE_storageBucket ,
+  messagingSenderId:import.meta.env.VITE_messagingSenderId ,
+  appId:import.meta.env.VITE_appId ,
 };
 
 const app = initializeApp(firebaseConfig);
