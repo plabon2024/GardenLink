@@ -39,26 +39,71 @@ const Header = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu gap-3 menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-white  backdrop-blur-md"
+              className="menu gap-3 menu-sm dropdown-content bg-slate-300 rounded-box z-1 mt-3 w-52 p-2 shadow text-white  backdrop-blur-md"
             >
-              <li >
-                <NavLink to="/" className="btn hover:bg-black hover:text-white">Home</NavLink>
+              <li>
+                <NavLink to="/" className="btn hover:bg-black hover:text-white">
+                  Home
+                </NavLink>
               </li>
-              <li >
-                <NavLink to="/allgardeners" className="btn hover:bg-black hover:text-white">Explore Gardeners </NavLink>
+              <li>
+                <NavLink
+                  to="/allgardeners"
+                  className="btn hover:bg-black hover:text-white"
+                >
+                  Explore Gardeners{" "}
+                </NavLink>
               </li>
-              <li >
-                <NavLink to="/alltips" className="btn hover:bg-black hover:text-white">Browse Tips </NavLink>
+              <li>
+                <NavLink
+                  to="/alltips"
+                  className="btn hover:bg-black hover:text-white"
+                >
+                  Browse Tips{" "}
+                </NavLink>
               </li>
-              <li >
-                <NavLink to="/tip" className="btn hover:bg-black hover:text-white"> Share a Garden Tip</NavLink>
-              </li>
-              <li >
-                <NavLink to="/mytips" className="btn hover:bg-black hover:text-white">My Tips </NavLink>
-              </li>
-              <li >
-                <NavLink to="/login" className="btn hover:bg-black hover:text-white">Login/Signup </NavLink>
-              </li>
+
+              {!user ? (
+                <>
+                  <li>
+                    <NavLink
+                      to="/signup"
+                      className="btn hover:bg-black hover:text-white"
+                    >
+                    Signup
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/login"
+                      className="btn hover:bg-black hover:text-white"
+                    >
+                      Login
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <li>
+                    <NavLink
+                      to="/tip"
+                      className="btn hover:bg-black hover:text-white"
+                    >
+                      {" "}
+                      Share a Garden Tip
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/mytips"
+                      className="btn hover:bg-black hover:text-white"
+                    >
+                      My Tips{" "}
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <h1>
@@ -67,27 +112,70 @@ const Header = () => {
         </div>
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 gap-2">
-            <li >
-              <NavLink to="/"className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm ">Home</NavLink>
+            <li>
+              <NavLink
+                to="/"
+                className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm "
+              >
+                Home
+              </NavLink>
             </li>
-            <li >
-              <NavLink to="/allgardeners"className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">Explore Gardeners </NavLink>
+            <li>
+              <NavLink
+                to="/allgardeners"
+                className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm"
+              >
+                Explore Gardeners{" "}
+              </NavLink>
             </li>
-            <li >
-              <NavLink to="/alltips"className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">Browse Tips </NavLink>
+            <li>
+              <NavLink
+                to="/alltips"
+                className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm"
+              >
+                Browse Tips{" "}
+              </NavLink>
             </li>
-            {!user ? (   <li >
-              <NavLink to="/login"className=" btn  outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">Login/Signup </NavLink>
-            </li>):(<>
-            <li >
-              <NavLink to="/mytips"className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm">My Tips </NavLink>
-            </li>
-            <li >
-              <NavLink to="/tip"className=" btn outline-none  hover:bg-black hover:text-white hover:border-none rounded-sm"> Share a Garden Tip</NavLink>
-            </li>
-            </> )}
-           
-         
+            {!user ? (
+              <>
+                <li>
+                  <NavLink
+                    to="/signup"
+                    className=" btn  outline-none hover:bg-black hover:text-white hover:border-none rounded-sm"
+                  >
+                  Signup{" "}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/login"
+                    className=" btn  outline-none hover:bg-black hover:text-white hover:border-none rounded-sm"
+                  >
+                    Login
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <NavLink
+                    to="/mytips"
+                    className=" btn outline-none hover:bg-black hover:text-white hover:border-none rounded-sm"
+                  >
+                    My Tips{" "}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/tip"
+                    className=" btn outline-none  hover:bg-black hover:text-white hover:border-none rounded-sm"
+                  >
+                    {" "}
+                    Share a Garden Tip
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <div className="navbar-end">

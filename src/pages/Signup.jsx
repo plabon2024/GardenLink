@@ -45,7 +45,7 @@ const Singnup = () => {
     const passwordRegExp = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
     if (passwordRegExp.test(password) === false) {
       setError(
-        "Password must have one lowercase, one uppercase, one digit and 6 characters or longer."
+        "Password must have one lowercase, one uppercase, one digit and 8 characters or longer."
       );
       return;
     }
@@ -75,7 +75,7 @@ const Singnup = () => {
   }
   return (
     <div>
-      <section className="grid text-center min-h-screen items-center p-8">
+      <section className="grid text-center  items-center p-8">
         <div className="w-full max-w-md mx-auto text-left">
           <h2 className="text-3xl font-bold mb-2 text-blue-800">Sign up</h2>
           <p className="mb-10 text-gray-600 text-[18px]">
