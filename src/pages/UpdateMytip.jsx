@@ -1,9 +1,29 @@
-import React from "react";
-import { useLoaderData } from "react-router";
+import React, { useContext, useEffect } from "react";
+import { useLoaderData, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../context/AuthProvider";
 
 const UpdateMytip = () => {
-  const {_id, title, category, image, description, difficulty, type,Availability } =
-    useLoaderData();
+  const {
+    _id,
+    title,
+    category,
+    image,
+    description,
+    difficulty,
+    type,
+    email: email,
+    Availability: availability,
+  } = useLoaderData();
+
+  const { user } = useContext(AuthContext);
+  const location = useLocation();
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (availability === "Private" && user.email !== email) {
+      navigate(location.state?.from || "/");
+    }
+  }, [user, email, navigate, location]);
 
   const handleUpdatetip = (e) => {
     e.preventDefault();
@@ -26,11 +46,17 @@ const UpdateMytip = () => {
       });
   };
   return (
-    <div>
-      <form onSubmit={handleUpdatetip} className="text-left">
+    <div className="">
+      <form
+        onSubmit={handleUpdatetip}
+        className="text-left container mx-auto py-20 overflow-x-auto"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="mb-6">
-            <label htmlFor="title" className="block mb-2 font-medium text-gray-900">
+            <label
+              htmlFor="title"
+              className="block mb-2 font-medium text-gray-900"
+            >
               Title
             </label>
             <input
@@ -44,7 +70,10 @@ const UpdateMytip = () => {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="type" className="block mb-2 font-medium text-gray-900">
+            <label
+              htmlFor="type"
+              className="block mb-2 font-medium text-gray-900"
+            >
               Plant Type/Topic
             </label>
             <input
@@ -58,7 +87,10 @@ const UpdateMytip = () => {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="difficulty" className="block mb-2 font-medium text-gray-900">
+            <label
+              htmlFor="difficulty"
+              className="block mb-2 font-medium text-gray-900"
+            >
               Difficulty Level
             </label>
             <select
@@ -75,7 +107,10 @@ const UpdateMytip = () => {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="description" className="block mb-2 font-medium text-gray-900">
+            <label
+              htmlFor="description"
+              className="block mb-2 font-medium text-gray-900"
+            >
               Description
             </label>
             <input
@@ -89,7 +124,10 @@ const UpdateMytip = () => {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="image" className="block mb-2 font-medium text-gray-900">
+            <label
+              htmlFor="image"
+              className="block mb-2 font-medium text-gray-900"
+            >
               Image URL
             </label>
             <input
@@ -103,7 +141,10 @@ const UpdateMytip = () => {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="category" className="block mb-2 font-medium text-gray-900">
+            <label
+              htmlFor="category"
+              className="block mb-2 font-medium text-gray-900"
+            >
               Category
             </label>
             <input
@@ -116,14 +157,17 @@ const UpdateMytip = () => {
             />
           </div>
 
-          <div className="mb-6">
-            <label htmlFor="Availability" className="block mb-2 font-medium text-gray-900">
+          <div className="mb-6 col-span-2">
+            <label
+              htmlFor="Availability"
+              className="block mb-2 font-medium text-gray-900"
+            >
               Availability
             </label>
             <select
               id="Availability"
               name="Availability"
-              defaultValue={Availability || ""}
+              defaultValue={availability || ""}
               className="w-full bg-white shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             >
               <option value="">Select Availability</option>
@@ -131,7 +175,40 @@ const UpdateMytip = () => {
               <option value="Private">Private</option>
             </select>
           </div>
-
+          <div className="mb-6">
+            <label
+              htmlFor="displayName"
+              className="block mb-2 font-medium text-gray-900"
+            >
+              Name
+            </label>
+            <input
+              id="displayName"
+              type="text"
+              name="displayName"
+              placeholder="Enter displayName"
+              value={user.displayName}
+              readOnly
+              className="w-full cursor-not-allowed bg-slate-200 shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+            />
+          </div>
+          <div className="mb-6 ">
+            <label
+              htmlFor="email"
+              className="block mb-2 font-medium text-gray-900"
+            >
+              Email
+            </label>
+            <input
+              id="email"
+              type="text"
+              name="email"
+              placeholder="Enter email"
+              value={user.email}
+              readOnly
+              className="w-full cursor-not-allowed bg-slate-200 shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+            />
+          </div>
           <button
             type="submit"
             className="text-xl btn btn-primary md:col-span-2 text-black border rounded p-5"

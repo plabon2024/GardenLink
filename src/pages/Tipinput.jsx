@@ -8,8 +8,6 @@ const Tipinput = () => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-     formData.append("displayName", user.displayName);
-  formData.append("email", user.email);
 
     const gardener = Object.fromEntries(formData.entries());
     fetch("http://localhost:3000/tip", {
@@ -26,7 +24,10 @@ const Tipinput = () => {
   };
   return (
     <div>
-      <form onSubmit={handleAddGardener} className="text-left">
+      <form
+        onSubmit={handleAddGardener}
+        className="text-left overflow-x-auto container mx-auto my-10"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="mb-6">
             <label
@@ -127,7 +128,7 @@ const Tipinput = () => {
             />
           </div>
 
-          <div className="mb-6">
+          <div className="mb-6 col-span-2">
             <label
               htmlFor="Availability"
               className="block mb-2 font-medium text-gray-900"
@@ -145,6 +146,40 @@ const Tipinput = () => {
             </select>
           </div>
 
+          <div className="mb-6">
+            <label
+              htmlFor="displayName"
+              className="block mb-2 font-medium text-gray-900"
+            >
+              Name
+            </label>
+            <input
+              id="displayName"
+              type="text"
+              name="displayName"
+              placeholder="Enter displayName"
+              value={user.displayName}
+              readOnly
+              className="w-full cursor-not-allowed bg-slate-200 shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+            />
+          </div>
+          <div className="mb-6 ">
+            <label
+              htmlFor="email"
+              className="block mb-2 font-medium text-gray-900"
+            >
+              Email
+            </label>
+            <input
+              id="email"
+              type="text"
+              name="email"
+              placeholder="Enter email"
+              value={user.email}
+              readOnly 
+              className="w-full cursor-not-allowed bg-slate-200 shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+            />
+          </div>
           <button
             type="submit"
             className="text-xl btn btn-primary md:col-span-2 text-black border rounded p-5"
