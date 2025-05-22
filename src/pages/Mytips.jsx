@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { Link } from "react-router";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaPen  } from "react-icons/fa";
+
 
 const Mytips = () => {
   const { user } = useContext(AuthContext);
@@ -27,7 +28,6 @@ const Mytips = () => {
             </tr>
           </thead>
           <tbody>
-         
             {all.map((item) => (
               <tr key={item.id} className="border-t border-black ">
                 <td>
@@ -47,6 +47,10 @@ const Mytips = () => {
                   <Link to={`/tipdetails/${item._id}`}>
                     <FaEye className="btn btn-ghost border-none size-14" />
                   </Link>
+                  <Link to={`/updatemytip/${item._id}`}>
+                    <FaPen className="btn btn-ghost border-none size-14" />
+                  </Link>
+                
                 </td>
               </tr>
             ))}

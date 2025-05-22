@@ -10,6 +10,7 @@ import ExploreGardeners from "../pages/ExploreGardeners";
 import BrowseTips from "../pages/BrowseTips";
 import TipDetails from "../pages/TipDetails";
 import Mytips from "../pages/Mytips";
+import UpdateMytip from "../pages/UpdateMytip";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,16 @@ const router = createBrowserRouter([
       { path: "/gardeners", Component: Gardeners },
       { path: "/allgardeners", Component: ExploreGardeners },
       { path: "/alltips", Component: BrowseTips },
+      {
+        path: "/updatemytip/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/tipdetails/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateMytip></UpdateMytip>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "/mytips",
         element: (

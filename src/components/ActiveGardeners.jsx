@@ -13,7 +13,7 @@ const ActiveGardeners = () => {
   }, []);
 
   return (  
-    <div className="relative h-[70vh]">
+    <div className="relative">
       <div className="relative ">
         <img
           src="/images/3.png"
