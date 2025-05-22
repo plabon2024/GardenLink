@@ -1,10 +1,26 @@
-import React from "react";
-import { useLoaderData } from "react-router";
+import React, { useContext, useEffect } from "react";
+import { useLoaderData, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../context/AuthProvider";
 
 const TipDetails = () => {
-  const { title, category, image, description, difficulty, type } =
-    useLoaderData();
+  const {
+    title,
+    category,
+    image,
+    description,
+    difficulty,
+    type,
+    email: email,
+  } = useLoaderData();
+  const { user } = useContext(AuthContext);
+  const location = useLocation();
+  let navigate = useNavigate();
 
+  useEffect(() => {
+    if (user.email !== email) {
+      navigate(location.state?.from || "/");
+    }
+  }, [user, email, navigate, location]);
   return (
     <div>
       <div className="mx-auto flex justify-center items-center h-[calc(100vh-300px)]">

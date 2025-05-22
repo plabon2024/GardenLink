@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { Link } from "react-router";
 import { FaEye, FaPen  } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+
 
 
 const Mytips = () => {
@@ -16,6 +18,13 @@ const Mytips = () => {
         setAll(data);
       });
   }, [user.email]);
+
+    const handleDelete=(_id)=>{
+    fetch(`http://localhost:3000/delete/${_id}`,{
+      method:"DELETE"
+    }).then(res=>res.json())
+    .then(data=>{console.log(data)})
+  }
   return (
     <div>
       <div className="overflow-x-auto rounded-md border border-black">
@@ -50,6 +59,9 @@ const Mytips = () => {
                   <Link to={`/updatemytip/${item._id}`}>
                     <FaPen className="btn btn-ghost border-none size-14" />
                   </Link>
+                  <div>
+                    <MdDelete  onClick={()=>handleDelete(item._id)} className="btn btn-ghost border-none size-14" />
+                  </div>
                 
                 </td>
               </tr>
