@@ -43,8 +43,7 @@ const Mytips = () => {
   };
   return (
     <div>
-      <div
-        className="overflow-x-auto rounded-md border border-black container mx-auto lg:min-h-[calc(100vh-500px)] my-10">
+      <div className="overflow-x-auto rounded-md border border-black container mx-auto lg:min-h-[calc(100vh-500px)] my-10">
         <table className="table w-full">
           <thead>
             <tr className="border-b border-black ">
@@ -56,43 +55,49 @@ const Mytips = () => {
             </tr>
           </thead>
           <tbody>
-            
-            {all.map((item) => (
-              <tr key={item.id} className="border-t border-black ">
-                <td>
-                  <div className="flex items-center gap-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle h-12 w-12">
-                        <img src={item.image} alt="item" />
+            {all.length === 0 ? (
+ <tr>
+        <td colSpan="5" className="text-center py-4">
+          No Post Found
+        </td>
+      </tr>            ) : (
+              all.map((item) => (
+                <tr key={item.id} className="border-t border-black ">
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle h-12 w-12">
+                          <img src={item.image} alt="item" />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-bold">{item.title}</div>
                       </div>
                     </div>
+                  </td>
+                  <td>{item.category}</td>
+                  <td className="hidden md:block">
+                    <Link to={`/tipdetails/${item._id}`}>
+                      <FaEye className="btn btn-ghost border-none size-14" />
+                    </Link>
+                  </td>
+                  <td>
+                    {" "}
+                    <Link to={`/updatemytip/${item._id}`}>
+                      <FaPen className="btn btn-ghost border-none size-14" />
+                    </Link>
+                  </td>
+                  <td>
                     <div>
-                      <div className="font-bold">{item.title}</div>
+                      <MdDelete
+                        onClick={() => handleDelete(item._id)}
+                        className="btn btn-ghost border-none size-14"
+                      />
                     </div>
-                  </div>
-                </td>
-                <td>{item.category}</td>
-                <td className="hidden md:block">
-                  <Link to={`/tipdetails/${item._id}`}>
-                    <FaEye className="btn btn-ghost border-none size-14" />
-                  </Link>
-                </td>
-                <td>
-                  {" "}
-                  <Link to={`/updatemytip/${item._id}`}>
-                    <FaPen className="btn btn-ghost border-none size-14" />
-                  </Link>
-                </td>
-                <td>
-                  <div>
-                    <MdDelete
-                      onClick={() => handleDelete(item._id)}
-                      className="btn btn-ghost border-none size-14"
-                    />
-                  </div>
-                </td>
-              </tr>
-            ))}
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

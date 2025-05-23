@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthProvider";
 import toast from "daisyui/components/toast";
+import { Tooltip } from "react-tooltip";
 
 const Header = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -70,7 +71,7 @@ const Header = () => {
                       to="/signup"
                       className="btn hover:bg-black hover:text-white"
                     >
-                    Signup
+                      Signup
                     </NavLink>
                   </li>
                   <li>
@@ -143,7 +144,7 @@ const Header = () => {
                     to="/signup"
                     className=" btn  outline-none hover:bg-black hover:text-white hover:border-none rounded-sm"
                   >
-                  Signup{" "}
+                    Signup{" "}
                   </NavLink>
                 </li>
                 <li>
@@ -184,17 +185,12 @@ const Header = () => {
               Login
             </NavLink>
           ) : (
-            <div
-              className="dropdown dropdown-left tooltip tooltip-bottom "
-              data-tip="hello"
-            >
-              <div className="tooltip-content z-20">
-                <div className=" font-black">{user.displayName}</div>
-              </div>
+            <div className="dropdown dropdown-left "  data-tooltip-id="my-tooltip">
               <div
                 tabIndex={0}
                 role="button"
                 className="btn btn-ghost btn-circle avatar"
+              
               >
                 <div className="w-10 rounded-full">
                   <img
@@ -205,6 +201,13 @@ const Header = () => {
                         ? user.photoURL
                         : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
                     }
+                  />
+
+                  <Tooltip
+                    id="my-tooltip"
+                    className="z-50 bg-slate-400"
+                    content={user.displayName}
+                    place="bottom-start"
                   />
                 </div>
               </div>

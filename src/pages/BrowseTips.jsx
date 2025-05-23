@@ -18,34 +18,41 @@ const BrowseTips = () => {
   return (
     <div className="flex-col flex justify-center container mx-auto ">
       <div className="flex p-4">
-          <select
-            className="border border-gray-300 rounded px-4 py-2"
-            value={difficultyFilter}
-            onChange={(e) => setDifficultyFilter(e.target.value)}
-          >
-            <option value="All">All</option>
-            <option value="Easy">Easy</option>
-            <option value="Medium">Medium</option>
-            <option value="Hard">Hard</option>
-          </select>
-        </div>
+        <select
+          className="border border-gray-300 rounded px-4 py-2"
+          value={difficultyFilter}
+          onChange={(e) => setDifficultyFilter(e.target.value)}
+        >
+          <option value="All">All</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </div>
       <div className="overflow-x-auto rounded-md border border-black  my-5 flex-col flex">
-     
-
         <table className="table w-full">
           <thead>
             <tr className="border-b border-black ">
               <th>Title</th>
               <th>Category</th>
+              <th>Difficulty</th>
               <th>See More</th>
             </tr>
           </thead>
           <tbody>
-             {[...alltips]
+            {[...alltips]
               .sort((a, b) => {
                 if (difficultyFilter === "All") return 0;
-                if (a.difficulty === difficultyFilter && b.difficulty !== difficultyFilter) return -1;
-                if (a.difficulty !== difficultyFilter && b.difficulty === difficultyFilter) return 1;
+                if (
+                  a.difficulty === difficultyFilter &&
+                  b.difficulty !== difficultyFilter
+                )
+                  return -1;
+                if (
+                  a.difficulty !== difficultyFilter &&
+                  b.difficulty === difficultyFilter
+                )
+                  return 1;
                 return 0;
               })
               .map((item) => (
@@ -63,6 +70,9 @@ const BrowseTips = () => {
                     </div>
                   </td>
                   <td>{item.category}</td>
+                  <td>
+                    <div className="font-bold">{item.difficulty}</div>
+                  </td>
                   <td>
                     <Link to={`/tipdetails/${item._id}`}>
                       <FaEye className="btn btn-ghost border-none size-14" />
