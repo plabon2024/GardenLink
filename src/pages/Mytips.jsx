@@ -10,7 +10,7 @@ const Mytips = () => {
 
   const [all, setAll] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:3000/mytips/${user.email}`)
+    fetch(`${import.meta.env.VITE_baseurl}/mytips/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -30,7 +30,7 @@ const Mytips = () => {
     }).then((result) => {
       console.log(result.isConfirmed);
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/delete/${_id}`, {
+        fetch(`${import.meta.env.VITE_baseurl}/delete/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -43,10 +43,10 @@ const Mytips = () => {
   };
   return (
     <div>
-      <div className="overflow-x-auto rounded-md border border-black container mx-auto lg:min-h-[calc(100vh-500px)] my-10">
+      <div className="overflow-x-auto rounded-md border border-secondary container mx-auto lg:min-h-[calc(100vh-500px)] my-10">
         <table className="table w-full">
           <thead>
-            <tr className="border-b border-black ">
+            <tr className="border-b border-secondary ">
               <th>Title</th>
               <th>category</th>
               <th className="hidden md:block">See More</th>
@@ -62,7 +62,7 @@ const Mytips = () => {
         </td>
       </tr>            ) : (
               all.map((item) => (
-                <tr key={item.id} className="border-t border-black ">
+                <tr key={item.id} className="border-t border-secondary ">
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">

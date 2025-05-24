@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const Tip = ({ tip }) => {
   const { user } = useContext(AuthContext);
   const [like, setLike] = useState(false);
   const [likes, setLikes] = useState(0);
   const { _id, likedBy = [] } = tip;
+  console.log(user);
 
   useEffect(() => {
     if (Array.isArray(likedBy) && user?.email) {
@@ -15,18 +17,29 @@ const Tip = ({ tip }) => {
     }
   }, [likedBy, user]);
 
+  useEffect(() => {
+    setLikes(likedBy.length);
+  }, [likedBy, user,]);
+
   const toggleLike = async () => {
-    fetch(`http://localhost:3000/toggle-like/${_id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: user.email }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setLike(!like);
-        setLikes(!like ? likes + 1 : likes - 1);
-        console.log(data, "hi");
-      });
+    user
+      ? fetch(`${import.meta.env.VITE_baseurl}/toggle-like/${_id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: user.email }),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            setLike(!like);
+            setLikes(!like ? likes + 1 : likes - 1);
+            
+          })
+      : Swal.fire({
+          title: "Login first to like Tip",
+          icon: "error",
+          timer: 2000,
+          showConfirmButton: false,
+        });
   };
   return (
     <>

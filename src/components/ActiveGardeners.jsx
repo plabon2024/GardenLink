@@ -4,7 +4,7 @@ import Gardeners from "./Gardeners";
 const ActiveGardeners = () => {
   const [activegardeners, setActivegardeners] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/gardeners")
+    fetch(`${import.meta.env.VITE_baseurl}/gardeners`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -26,7 +26,7 @@ const ActiveGardeners = () => {
         Active Gardeners
       </h2>
     
-        <div className="container mx-auto justify-center flex flex-wrap gap-5 gap">
+        <div className="container mx-auto justify-center flex flex-wrap gap-5 gap text-info">
           {activegardeners.map((gardener, index) => (
             <div key={index} className="">
               <div className="card bg-slate-200 rounded-md w-96 shadow-sm pt-5">

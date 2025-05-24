@@ -8,10 +8,9 @@ const BrowseTips = () => {
   const [difficultyFilter, setDifficultyFilter] = useState("All");
 
   useEffect(() => {
-    fetch("http://localhost:3000/alltip")
+    fetch(`${import.meta.env.VITE_baseurl}/alltip`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setAlltips(data);
       });
   }, []);
@@ -19,7 +18,7 @@ const BrowseTips = () => {
     <div className="flex-col flex justify-center container mx-auto ">
       <div className="flex p-4">
         <select
-          className="border border-gray-300 rounded px-4 py-2"
+          className="border border-secondary rounded px-4 py-2"
           value={difficultyFilter}
           onChange={(e) => setDifficultyFilter(e.target.value)}
         >
@@ -29,10 +28,10 @@ const BrowseTips = () => {
           <option value="Hard">Hard</option>
         </select>
       </div>
-      <div className="overflow-x-auto rounded-md border border-black  my-5 flex-col flex">
+      <div className="overflow-x-auto rounded-md border border-secondary    my-5 flex-col flex">
         <table className="table w-full">
           <thead>
-            <tr className="border-b border-black ">
+            <tr className="border-b border-secondary">
               <th>Title</th>
               <th>Category</th>
               <th>Difficulty</th>
@@ -56,7 +55,7 @@ const BrowseTips = () => {
                 return 0;
               })
               .map((item) => (
-                <tr key={item.id} className="border-t border-black ">
+                <tr key={item.id} className="border-t border-secondary">
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">

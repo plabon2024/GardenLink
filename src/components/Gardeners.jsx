@@ -6,7 +6,7 @@ const Gardeners = () => {
     const form = e.target;
     const formData = new FormData(form);
     const gardener = Object.fromEntries(formData.entries());
-    fetch("http://localhost:3000/gardeners", {
+    fetch(`${import.meta.env.VITE_baseurl}/gardeners`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

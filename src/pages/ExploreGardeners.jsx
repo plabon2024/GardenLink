@@ -3,10 +3,9 @@ import React, { useEffect, useState } from "react";
 const ExploreGardeners = () => {
   const [allgardeners, setAllgardeners] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/allgardeners")
+    fetch(`${import.meta.env.VITE_baseurl}/allgardeners`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setAllgardeners(data);
       });
   }, []);
@@ -14,7 +13,7 @@ const ExploreGardeners = () => {
     <div className="container mx-auto flex flex-wrap gap-5 items-center justify-center my-10">
       {allgardeners.map((gardener, index) => (
         <div key={index} className="">
-          <div className="card bg-slate-200 rounded-md w-96 shadow-sm pt-5">
+          <div className="card bg-slate-200 text-info rounded-md w-96 shadow-sm pt-5">
             <div className="avatar mx-auto">
               <div className="w-24 rounded ">
                 <img src={gardener.image} />

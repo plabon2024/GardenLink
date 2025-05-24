@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useLoaderData, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthProvider";
+import Swal from "sweetalert2";
 
 const UpdateMytip = () => {
   const {
@@ -30,7 +31,7 @@ const UpdateMytip = () => {
     const form = e.target;
     const formData = new FormData(form);
     const updatedtip = Object.fromEntries(formData.entries());
-    fetch(`http://localhost:3000/mytips/${_id}`, {
+    fetch(`${import.meta.env.VITE_baseurl}/mytips/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -41,9 +42,16 @@ const UpdateMytip = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount) {
-          alert("upldated");
+          Swal.fire({
+            title: "Tip updated",
+            text: "You successfully updated Tip !",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
+    form.reset();
   };
   return (
     <div className="">
@@ -53,10 +61,7 @@ const UpdateMytip = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="mb-6">
-            <label
-              htmlFor="title"
-              className="block mb-2 font-medium text-gray-900"
-            >
+            <label htmlFor="title" className="block mb-2 font-medium ">
               Title
             </label>
             <input
@@ -65,15 +70,12 @@ const UpdateMytip = () => {
               name="title"
               defaultValue={title || ""}
               placeholder="Enter Tip Title"
-              className="w-full bg-white shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+              className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
           </div>
 
           <div className="mb-6">
-            <label
-              htmlFor="type"
-              className="block mb-2 font-medium text-gray-900"
-            >
+            <label htmlFor="type" className="block mb-2 font-medium ">
               Plant Type/Topic
             </label>
             <input
@@ -82,22 +84,19 @@ const UpdateMytip = () => {
               name="type"
               defaultValue={type || ""}
               placeholder="Enter Plant Type/Topic"
-              className="w-full bg-white shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+              className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
           </div>
 
           <div className="mb-6">
-            <label
-              htmlFor="difficulty"
-              className="block mb-2 font-medium text-gray-900"
-            >
+            <label htmlFor="difficulty" className="block mb-2 font-medium ">
               Difficulty Level
             </label>
             <select
               id="difficulty"
               name="difficulty"
               defaultValue={difficulty || ""}
-              className="w-full bg-white shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+              className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             >
               <option value="">Select difficulty</option>
               <option value="Easy">Easy</option>
@@ -107,10 +106,7 @@ const UpdateMytip = () => {
           </div>
 
           <div className="mb-6">
-            <label
-              htmlFor="description"
-              className="block mb-2 font-medium text-gray-900"
-            >
+            <label htmlFor="description" className="block mb-2 font-medium ">
               Description
             </label>
             <input
@@ -119,15 +115,12 @@ const UpdateMytip = () => {
               name="description"
               defaultValue={description || ""}
               placeholder="Enter gardening experience"
-              className="w-full bg-white shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+              className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
           </div>
 
           <div className="mb-6">
-            <label
-              htmlFor="image"
-              className="block mb-2 font-medium text-gray-900"
-            >
+            <label htmlFor="image" className="block mb-2 font-medium ">
               Image URL
             </label>
             <input
@@ -136,15 +129,12 @@ const UpdateMytip = () => {
               name="image"
               defaultValue={image || ""}
               placeholder="Enter image URL"
-              className="w-full bg-white shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+              className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
           </div>
 
           <div className="mb-6">
-            <label
-              htmlFor="category"
-              className="block mb-2 font-medium text-gray-900"
-            >
+            <label htmlFor="category" className="block mb-2 font-medium ">
               Category
             </label>
             <input
@@ -153,22 +143,19 @@ const UpdateMytip = () => {
               name="category"
               defaultValue={category || ""}
               placeholder="Enter category"
-              className="w-full bg-white shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+              className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
           </div>
 
           <div className="mb-6 col-span-2">
-            <label
-              htmlFor="Availability"
-              className="block mb-2 font-medium text-gray-900"
-            >
+            <label htmlFor="Availability" className="block mb-2 font-medium ">
               Availability
             </label>
             <select
               id="Availability"
               name="Availability"
               defaultValue={availability || ""}
-              className="w-full bg-white shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+              className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             >
               <option value="">Select Availability</option>
               <option value="Public">Public</option>
@@ -176,10 +163,7 @@ const UpdateMytip = () => {
             </select>
           </div>
           <div className="mb-6">
-            <label
-              htmlFor="displayName"
-              className="block mb-2 font-medium text-gray-900"
-            >
+            <label htmlFor="displayName" className="block mb-2 font-medium ">
               Name
             </label>
             <input
@@ -189,14 +173,11 @@ const UpdateMytip = () => {
               placeholder="Enter displayName"
               value={user.displayName}
               readOnly
-              className="w-full cursor-not-allowed bg-slate-200 shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+              className="w-full cursor-not-allowed shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
           </div>
           <div className="mb-6 ">
-            <label
-              htmlFor="email"
-              className="block mb-2 font-medium text-gray-900"
-            >
+            <label htmlFor="email" className="block mb-2 font-medium ">
               Email
             </label>
             <input
@@ -206,7 +187,7 @@ const UpdateMytip = () => {
               placeholder="Enter email"
               value={user.email}
               readOnly
-              className="w-full cursor-not-allowed bg-slate-200 shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+              className="w-full cursor-not-allowed  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
           </div>
           <button

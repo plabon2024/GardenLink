@@ -31,10 +31,9 @@ const Banner = () => {
               <h2 className="text-3xl md:text-5xl font-bold">
                 Your Green Journey Starts Here
               </h2>
-              <p>
-                Begin your sustainable living journey today with simple
-                gardening tools, guides, and support—turning your space into a
-                green haven.
+              <p className="font-semibold">
+                 Join us at the Green Living Expo 2025 to explore sustainable tools, attend expert-led workshops, 
+  and connect with eco-conscious communities—all designed to help you grow a greener future.
               </p>
               <button className="btn ">Learn More</button>
             </div>
@@ -52,8 +51,8 @@ const Banner = () => {
                 Urban Gardening Made Simple
               </h2>
               <p>
-                Discover how easy it is to grow fresh food and plants right from
-                your balcony, rooftop, or backyard—no experience required.
+                 Join our upcoming Urban Gardening Workshop and learn how to grow fresh food 
+  from your balcony, rooftop, or backyard—perfect for beginners and city dwellers alike.
               </p>
               <button className="btn ">Learn More</button>
             </div>
@@ -69,9 +68,8 @@ const Banner = () => {
             >
               <h2 className="text-3xl lg:text-5xl font-bold">Grow Together</h2>
               <p>
-                Join a thriving community of urban gardeners sharing tips,
-                resources, and inspiration to make cities greener—one plant at a
-                time.
+                Be part of our Green City Meetup 2025—connect with fellow urban gardeners, exchange ideas, 
+  and get inspired to make your city greener, one plant at a time.
               </p>
               <button className="btn">Learn More</button>
             </div>

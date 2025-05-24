@@ -1,11 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { data, Navigate, NavLink, useLocation, useNavigate } from "react-router";
+import {
+  data,
+  Navigate,
+  NavLink,
+  useLocation,
+  useNavigate,
+} from "react-router";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../firebase/firebase.init";
 import { toast } from "react-toastify";
 import { AuthContext } from "../context/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { user, emailSignIn, googleSignIn } = useContext(AuthContext);
@@ -18,10 +25,15 @@ const Login = () => {
   };
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then((data) => {
+      .then(() => {
+        Swal.fire({
+          title: "Login successful !",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate(`${location.state ? location.state : "/"}`);
-        toast.success("Log in successful");
-        console.log(data)
+     
       })
       .catch(() => {});
   };
@@ -31,29 +43,57 @@ const Login = () => {
     const password = e.target.password.value;
     emailSignIn(email, password)
       .then(() => {
+         Swal.fire({
+          title: "Login successful !",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate(`${location.state ? location.state : "/"}`);
-        toast.success("Log in successful");
+     
       })
       .catch((error) => {
         setError(error.message);
       });
   };
+
   const handleForgotPassword = () => {
-    const email = prompt("Please enter your registered email:");
+    const { value: email } = Swal.fire({
+      title: "Enter your registered email",
+      input: "email",
+      inputLabel: "Email",
+      inputPlaceholder: "example@email.com",
+      showCancelButton: true,
+    });
 
     if (!email) {
-      alert("Email is required.");
+      Swal.fire({
+        title: "Email is required.",
+        icon: "warning",
+        timer: 1500,
+        showConfirmButton: false,
+      });
       return;
     }
 
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        alert(
-          "if you are regestered with email Password reset email sent. Please check your inbox."
-        );
+        Swal.fire({
+          title: "Password reset sent",
+          text: "Check your inbox for a reset link.",
+          icon: "success",
+          timer: 2000,
+          showConfirmButton: false,
+        });
       })
       .catch((error) => {
-        alert("Error: " + error.message);
+        Swal.fire({
+          title: "Error",
+          text: error.message,
+          icon: "error",
+          timer: 2000,
+          showConfirmButton: false,
+        });
       });
   };
 
@@ -64,7 +104,7 @@ const Login = () => {
   }, [user, navigate, location.state]);
 
   return (
-    <section className="  grid text-center items-center p-8">
+    <section className="grid text-center text-info items-center p-8 bg-warning w-fit mx-auto my-10 rounded-sm ">
       <div className="w-full max-w-md mx-auto text-left">
         <h2 className="text-3xl font-bold mb-2 text-blue-800">Sign In</h2>
         <p className="mb-10 text-gray-600 text-[18px]">

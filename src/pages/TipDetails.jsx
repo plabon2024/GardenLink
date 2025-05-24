@@ -39,7 +39,7 @@ const TipDetails = () => {
   }, [likedBy, user]);
 
   const toggleLike = async () => {
-    await fetch(`http://localhost:3000/toggle-like/${_id}`, {
+    await fetch(`${import.meta.env.VITE_baseurl}/toggle-like/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: user.email }),

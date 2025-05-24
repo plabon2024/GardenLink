@@ -1,37 +1,41 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light -- default;
+  themes: light, dark;
 }
 
 @plugin "daisyui/theme" {
-  themes: light;
+  name: "light";
   default: true;
   --color-primary: #84d364;
-  --color-secondary: #2ccc5c;
-  --color-warning: #ea4744;
+  --color-secondary: #000;
+  --color-warning: transparent;
+  --color-neutral: #000;
+  --color-info: #000;
+}
 
-  --color-neutral: #eceae3;
-  --color-info: #eceae3;
-  --color-black: #000;
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #84d364; /* Different primary color for dark mode */
+  --color-secondary: #ffffff;
+  --color-warning: #ffffff;
+  --color-neutral: #fff;
+  --color-info: #000;
 }
 
 * {
   scroll-behavior: smooth;
 }
-  a.active {
-    @apply border-none;
-    @apply text-white;
-    @apply bg-black;
- 
-  }
+
+a.active {
+  @apply border-none bg-neutral text-primary;
+}
+
 .swiper-button-next,
 .swiper-button-prev {
-  background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
   right: 10px;
   padding: 30px;
   color: #000 !important;
-
   fill: black !important;
   stroke: black !important;
 }
