@@ -18,11 +18,7 @@ const Banner = () => {
         {" "}
         <SwiperSlide>
           <div className="relative bg-[url('/images/1.webp')] bg-cover bg-center bg-no-repeat  min-h-[calc(100vh-200px)]">
-            <img
-              src="/images/1.webp"
-              alt="Hero"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+
             <div
               className=" lg:absolute top-0 left-0 lg:top-1/3 lg:left-2/12 
               bg-opacity-50  rounded-xl 
