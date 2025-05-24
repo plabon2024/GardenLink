@@ -238,7 +238,7 @@ const Header = () => {
             {/* this hidden checkbox controls the state */}
             <input
               type="checkbox"
-              onClick={handleToggle}
+              onChange={handleToggle}
               checked={theme === "light" ? false : true}
             />
 

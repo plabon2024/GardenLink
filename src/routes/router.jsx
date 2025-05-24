@@ -3,7 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Singnup from "../pages/Signup";
-import Gardeners from "../components/Gardeners";
+// import Gardeners from "../components/Gardeners";
 import Tipinput from "../pages/TipInput";
 import PrivateRoute from "../components/PrivateRoute";
 import ExploreGardeners from "../pages/ExploreGardeners";
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       { path: "/login", Component: Login },
       { path: "/signup", Component: Singnup },
-      { path: "/gardeners", Component: Gardeners },
+      // { path: "/gardeners", Component: Gardeners },
       { path: "/allgardeners", Component: ExploreGardeners },
       { path: "/alltips", Component: BrowseTips },
       {

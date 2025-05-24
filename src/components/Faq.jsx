@@ -12,12 +12,12 @@ const Faq = () => {
           <div className="flex flex-wrap justify-center lg:justify-between">
             <img
               className="zoomInOut"
-              src="/public/images/faq.png"
+              src="/images/faq.png"
               alt=""
             ></img>
             <div className="space-y-5 text-secondary">
               <div
-                tabindex="0"
+                tabIndex="0"
                 className="collapse collapse-open collapse-arrow border-secondary  border"
               >
                 <div className="collapse-title text-xl font-medium">
@@ -33,7 +33,7 @@ const Faq = () => {
               </div>
 
               <div
-                tabindex="0"
+                tabIndex="0"
                 className="collapse collapse-arrow border-secondary border"
               >
                 <input type="checkbox" className="peer" />
@@ -50,7 +50,7 @@ const Faq = () => {
               </div>
 
               <div
-                tabindex="0"
+                tabIndex="0"
                 className="collapse collapse-arrow border-secondary border"
               >
                 <input type="checkbox" className="peer" />
@@ -67,7 +67,7 @@ const Faq = () => {
               </div>
 
               <div
-                tabindex="0"
+                tabIndex="0"
                 className="collapse collapse-arrow border-secondary border"
               >
                 <input type="checkbox" className="peer" />

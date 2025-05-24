@@ -13,7 +13,6 @@ const Mytips = () => {
     fetch(`${import.meta.env.VITE_baseurl}/mytips/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setAll(data);
       });
   }, [user.email]);
@@ -28,7 +27,6 @@ const Mytips = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      console.log(result.isConfirmed);
       if (result.isConfirmed) {
         fetch(`${import.meta.env.VITE_baseurl}/delete/${_id}`, {
           method: "DELETE",

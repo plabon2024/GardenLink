@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useLoaderData, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthProvider";
 import Swal from "sweetalert2";
+import { Typewriter } from 'react-simple-typewriter'
 
 const UpdateMytip = () => {
   const {
@@ -40,7 +41,6 @@ const UpdateMytip = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount) {
           Swal.fire({
             title: "Tip updated",
@@ -54,7 +54,18 @@ const UpdateMytip = () => {
     form.reset();
   };
   return (
-    <div className="">
+    <div>
+      <h1 className="text-center text-3xl font-bold my-5">
+        <Typewriter
+          cursor
+          cursorBlinking
+          delaySpeed={1000}
+          deleteSpeed={40}
+          loop={1}
+          typeSpeed={150}
+          words={["Make Change On This Data To Update"]}
+        />{" "}
+      </h1>
       <form
         onSubmit={handleUpdatetip}
         className="text-left container mx-auto py-20 overflow-x-auto"

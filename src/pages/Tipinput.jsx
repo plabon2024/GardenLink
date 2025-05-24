@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
+import Swal from "sweetalert2";
 
 const Tipinput = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
   const handleAddGardener = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -18,8 +18,14 @@ const Tipinput = () => {
       body: JSON.stringify(gardener),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+            Swal.fire({
+                    title: "Tip added",
+                    text: "You successfully added new Tip !",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
       });
       form.reset()
   };

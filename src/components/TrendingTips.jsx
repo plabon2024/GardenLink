@@ -9,7 +9,6 @@ const TrendingTips = () => {
     fetch(`${import.meta.env.VITE_baseurl}/tip`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setTips(data);
       });
   }, []);
@@ -19,7 +18,7 @@ const TrendingTips = () => {
       <h1 className="my-5 text-2xl text-center font-bold">Trending Tips</h1>
       <div className="text-info flex flex-wrap lg:grid lg:grid-cols-2 justify-center  gap-2 my-10 container mx-auto">
         {tips.map((tip) => (
-          <Tip tip={tip}></Tip>
+          <Tip key={tip._id} tip={tip}></Tip>
         ))}
       </div>
 

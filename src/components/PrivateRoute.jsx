@@ -7,7 +7,7 @@ import { AuthContext } from "../context/AuthProvider";
 const PrivateRoute = ({ children }) => {
   const { user } = useContext(AuthContext);
   const location = useLocation();
-console.log(location)
+
   if (user && user.email) {
     return children;
   }

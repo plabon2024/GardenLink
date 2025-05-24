@@ -8,7 +8,7 @@ const Tip = ({ tip }) => {
   const [like, setLike] = useState(false);
   const [likes, setLikes] = useState(0);
   const { _id, likedBy = [] } = tip;
-  console.log(user);
+
 
   useEffect(() => {
     if (Array.isArray(likedBy) && user?.email) {
@@ -19,11 +19,11 @@ const Tip = ({ tip }) => {
 
   useEffect(() => {
     setLikes(likedBy.length);
-  }, [likedBy, user,]);
+  }, []);
 
   const toggleLike = async () => {
     user
-      ? fetch(`${import.meta.env.VITE_baseurl}/toggle-like/${_id}`, {
+      ?await fetch(`${import.meta.env.VITE_baseurl}/toggle-like/${_id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: user.email }),
@@ -43,7 +43,7 @@ const Tip = ({ tip }) => {
   };
   return (
     <>
-      <div className="col-auto flex grow bg-slate-200 p-4  container mx-auto w-full">
+      <div className="col-auto flex grow bg-slate-200 p-4  container mx-auto w-full rounded-sm">
         <div className="avatar">
           <div className="w-32 rounded">
             <img src={tip.image} />

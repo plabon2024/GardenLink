@@ -45,20 +45,19 @@ const TipDetails = () => {
       body: JSON.stringify({ email: user.email }),
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then(() => {
         setLike(!like);
-        setLikes(!like ? likes + 1 : likes - 1);
-        console.log(data, "hi");
+        setLikes(!like ? likes + 1 : likes - 1); 
       });
   };
 
   return (
     <div>
       <div className="mx-auto flex justify-center items-center">
-        <div className="p-5 backdrop-blur-md border border-black shadow-lg rounded-xl overflow-hidden max-w-fit">
+        <div className="p-5 backdrop-blur-md border border-black  bg-green-50 my-5 shadow-lg rounded-xl overflow-hidden max-w-fit">
           <img src={image} alt={title} className="w-full h-64 object-contain" />
 
-          <div className="p-6 space-y-4 text-black">
+          <div className="p-6 space-y-4 text-info">
             <h1 className="text-3xl font-bold">{title}</h1>
 
             <div className="flex flex-wrap gap-4 text-lg">
