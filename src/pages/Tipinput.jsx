@@ -47,6 +47,7 @@ const Tipinput = () => {
               id="title"
               type="text"
               name="title"
+              required
               placeholder="Enter  Plant Type/Topic"
               className="w-full   shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
@@ -63,6 +64,7 @@ const Tipinput = () => {
               id="type"
               type="text"
               name="type"
+              required
               placeholder="Enter  Plant Type/Topic"
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
@@ -78,6 +80,7 @@ const Tipinput = () => {
             <select
               id="difficulty"
               name="difficulty"
+              required
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             >
               <option value="">Select difficulty</option>
@@ -98,6 +101,7 @@ const Tipinput = () => {
               id="description"
               type="text"
               name="description"
+              required
               placeholder="Enter gardening experiences"
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
@@ -114,6 +118,7 @@ const Tipinput = () => {
               id="image"
               type="text"
               name="image"
+              required
               placeholder="Enter imageUrl"
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
@@ -130,6 +135,7 @@ const Tipinput = () => {
               id="category"
               type="text"
               name="category"
+              required
               placeholder="Enter Category "
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
@@ -145,6 +151,7 @@ const Tipinput = () => {
             <select
               id="Availability"
               name="Availability"
+              required
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             >
               <option  value="">Select Availability </option>

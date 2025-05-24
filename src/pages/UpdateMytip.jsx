@@ -79,6 +79,7 @@ const UpdateMytip = () => {
               id="title"
               type="text"
               name="title"
+              required
               defaultValue={title || ""}
               placeholder="Enter Tip Title"
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
@@ -93,6 +94,7 @@ const UpdateMytip = () => {
               id="type"
               type="text"
               name="type"
+              required
               defaultValue={type || ""}
               placeholder="Enter Plant Type/Topic"
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
@@ -106,6 +108,7 @@ const UpdateMytip = () => {
             <select
               id="difficulty"
               name="difficulty"
+              required
               defaultValue={difficulty || ""}
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             >
@@ -124,6 +127,7 @@ const UpdateMytip = () => {
               id="description"
               type="text"
               name="description"
+              required
               defaultValue={description || ""}
               placeholder="Enter gardening experience"
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
@@ -138,6 +142,7 @@ const UpdateMytip = () => {
               id="image"
               type="text"
               name="image"
+              required
               defaultValue={image || ""}
               placeholder="Enter image URL"
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
@@ -152,6 +157,7 @@ const UpdateMytip = () => {
               id="category"
               type="text"
               name="category"
+              required
               defaultValue={category || ""}
               placeholder="Enter category"
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
@@ -165,6 +171,7 @@ const UpdateMytip = () => {
             <select
               id="Availability"
               name="Availability"
+              required
               defaultValue={availability || ""}
               className="w-full  shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             >
