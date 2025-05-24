@@ -10,7 +10,7 @@ import {
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../firebase/firebase.init";
-import { toast } from "react-toastify";
+
 import { AuthContext } from "../context/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -33,7 +33,6 @@ const Login = () => {
           timer: 1500,
         });
         navigate(`${location.state ? location.state : "/"}`);
-     
       })
       .catch(() => {});
   };
@@ -43,22 +42,21 @@ const Login = () => {
     const password = e.target.password.value;
     emailSignIn(email, password)
       .then(() => {
-         Swal.fire({
+        Swal.fire({
           title: "Login successful !",
           icon: "success",
           showConfirmButton: false,
           timer: 1500,
         });
         navigate(`${location.state ? location.state : "/"}`);
-     
       })
       .catch((error) => {
         setError(error.message);
       });
   };
 
-  const handleForgotPassword = () => {
-    const { value: email } = Swal.fire({
+  const handleForgotPassword = async () => {
+    const { value: email, isConfirmed } = await Swal.fire({
       title: "Enter your registered email",
       input: "email",
       inputLabel: "Email",
@@ -66,7 +64,7 @@ const Login = () => {
       showCancelButton: true,
     });
 
-    if (!email) {
+    if (!isConfirmed || !email) {
       Swal.fire({
         title: "Email is required.",
         icon: "warning",
