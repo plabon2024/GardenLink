@@ -30,7 +30,7 @@ const Tipinput = () => {
       form.reset()
   };
   return (
-    <div>
+    <div className="mt-28">
       <form
         onSubmit={handleAddGardener}
         className="text-left overflow-x-auto container mx-auto my-10"

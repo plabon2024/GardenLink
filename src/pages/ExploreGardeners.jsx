@@ -10,26 +10,41 @@ const ExploreGardeners = () => {
       });
   }, []);
   return (
-    <div className="container mx-auto flex flex-wrap gap-5 items-center justify-center my-10">
+    <div className="container mx-auto mt-28 px-4 flex flex-wrap gap-8 justify-center">
       {allgardeners.map((gardener, index) => (
-        <div key={index} className="">
-          <div className="card bg-slate-200 text-info rounded-md w-96 shadow-sm pt-5">
-            <div className="avatar mx-auto">
-              <div className="w-24 rounded ">
-                <img src={gardener.image} />
+        <div key={index} className="w-full sm:w-[300px] md:w-[350px]">
+          <div className="card bg-white text-gray-800 shadow-lg hover:shadow-xl transition duration-300 rounded-xl overflow-hidden">
+            <div className="avatar mx-auto pt-6">
+              <div className="w-24 h-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src={gardener.image} alt={gardener.name} />
               </div>
             </div>
-            <div className="card-body ">
-              <h2 className="card-title">{gardener.name}</h2>
-              <h1 className="font-bold">Experienced In :</h1>
-              <div className="flex">
-                <p>{gardener.experiences}</p>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title text-lg font-semibold text-primary">
+                {gardener.name}
+              </h2>
+              <p className="font-bold text-sm mt-2 text-gray-600">
+                Experienced In:
+              </p>
+              <p className="text-sm text-gray-700">{gardener.experiences}</p>
+              <div className="divider my-2"></div>
+              <div className="text-sm space-y-1 text-gray-700">
+                <p>
+                  <span className="font-semibold">Age:</span> {gardener.age}
+                </p>
+                <p>
+                  <span className="font-semibold">Gender:</span>{" "}
+                  {gardener.gender}
+                </p>
+                <p>
+                  <span className="font-semibold">Status:</span>{" "}
+                  {gardener.status}
+                </p>
+                <p>
+                  <span className="font-semibold">Tips shared:</span>{" "}
+                  {gardener.tips}
+                </p>
               </div>
-              <p> Age : {gardener.age}</p>
-              <p> Gender : {gardener.gender}</p>
-              <p> Status : {gardener.status}</p>
-              <p> Tips shared : {gardener.tips}</p>
-            
             </div>
           </div>
         </div>

@@ -82,9 +82,9 @@ const Singnup = () => {
   }
   return (
     <div>
-      <section className="grid text-center text-info  items-center p-8 bg-warning w-fit mx-auto my-10 rounded-sm">
+      <section className="my-28 grid text-center text-info  items-center p-8 bg-warning w-fit mx-auto rounded-md">
         <div className="w-full max-w-md mx-auto text-left">
-          <h2 className="text-3xl font-bold mb-2 text-blue-800">Sign up</h2>
+          <h2 className="text-3xl font-bold mb-2 text-primary">Sign up</h2>
           <p className="mb-10 text-gray-600 text-[18px]">
             Enter your email and password to sign up
           </p>

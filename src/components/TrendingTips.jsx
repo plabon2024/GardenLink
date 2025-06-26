@@ -15,14 +15,12 @@ const TrendingTips = () => {
 
   return (
     <div>
-      <h1 className="my-5 text-2xl text-center font-bold">Trending Tips</h1>
-      <div className="text-info flex flex-wrap lg:grid lg:grid-cols-2 justify-center  gap-2 my-10 container mx-auto">
+      <h1 className="my-5 text-3xl text-center font-bold text-primary">Trending Tips</h1>
+      <div className="text-info flex flex-wrap lg:grid lg:grid-cols-2 justify-center gap-8  my-10 container mx-auto">
         {tips.map((tip) => (
           <Tip key={tip._id} tip={tip}></Tip>
         ))}
       </div>
-
-      
     </div>
   );
 };

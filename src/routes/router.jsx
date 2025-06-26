@@ -4,7 +4,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Singnup from "../pages/Signup";
 // import Gardeners from "../components/Gardeners";
-import Tipinput from "../pages/TipInput";
+
 import PrivateRoute from "../components/PrivateRoute";
 import ExploreGardeners from "../pages/ExploreGardeners";
 import BrowseTips from "../pages/BrowseTips";
@@ -12,6 +12,7 @@ import TipDetails from "../pages/TipDetails";
 import Mytips from "../pages/Mytips";
 import UpdateMytip from "../pages/UpdateMytip";
 import Errorpage from "../pages/Errorpage";
+import Tipinput from "../pages/Tipinput";
 
 const router = createBrowserRouter([
   {

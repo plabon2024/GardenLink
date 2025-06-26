@@ -6,25 +6,25 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #84d364;
+  --color-primary: #06923e;
   --color-secondary: #000;
   --color-warning: transparent;
   --color-neutral: #000;
   --color-info: #000;
+  --color-info-content: #d3eccd;
 }
 
 @plugin "daisyui/theme" {
   name: "dark";
-  --color-primary: #84d364; /* Different primary color for dark mode */
+  --color-primary: #06923e;
   --color-secondary: #ffffff;
   --color-warning: #ffffff;
   --color-neutral: #fff;
   --color-info: #000;
+  --color-info-content: #d3eccd;
 }
 
-* {
-  scroll-behavior: smooth;
-}
+
 
 a.active {
   @apply border-none bg-neutral text-primary;

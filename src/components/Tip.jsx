@@ -9,7 +9,6 @@ const Tip = ({ tip }) => {
   const [likes, setLikes] = useState(0);
   const { _id, likedBy = [] } = tip;
 
-
   useEffect(() => {
     if (Array.isArray(likedBy) && user?.email) {
       setLike(likedBy.includes(user.email));
@@ -23,7 +22,7 @@ const Tip = ({ tip }) => {
 
   const toggleLike = async () => {
     user
-      ?await fetch(`${import.meta.env.VITE_baseurl}/toggle-like/${_id}`, {
+      ? await fetch(`${import.meta.env.VITE_baseurl}/toggle-like/${_id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: user.email }),
@@ -32,7 +31,6 @@ const Tip = ({ tip }) => {
           .then(() => {
             setLike(!like);
             setLikes(!like ? likes + 1 : likes - 1);
-            
           })
       : Swal.fire({
           title: "Login first to like Tip",
@@ -43,33 +41,39 @@ const Tip = ({ tip }) => {
   };
   return (
     <>
-      <div className="col-auto flex grow bg-slate-200 p-4  container mx-auto w-full rounded-sm">
-        <div className="avatar">
-          <div className="w-32 rounded">
-            <img src={tip.image} />
-          </div>
-        </div>
-        <div className="card-body">
-          <h2 className="card-title">{tip.title}</h2>
+<div className="container mx-auto w-full bg-slate-100 rounded-lg p-4 flex flex-col sm:flex-row items-center gap-6 shadow-md">
+  {/* Avatar Image */}
+  <div className="avatar">
+    <div className="w-32 h-32 rounded-lg ring ring-primary ring-offset-base-100 ring-offset-2">
+      <img src={tip.image} alt={tip.title} className="object-cover w-full h-full" />
+    </div>
+  </div>
 
-          <p>Category: {tip.category}</p>
-          <Link
-            className="btn btn-ghost border-none w-fit"
-            to={`/tipdetails/${_id}`}
-          >
-            see more
-          </Link>
-          <div className="flex gap-10 items-end">
-            <button
-              onClick={toggleLike}
-              className="btn border-none btn-ghost btn-xl"
-            >
-              {like ? "❤️" : "🤍"}
-            </button>
-            <p>Total like: {likes}</p>
-          </div>
-        </div>
-      </div>
+  {/* Content Section */}
+  <div className="flex-grow">
+    <h2 className="text-xl font-bold text-primary mb-2">{tip.title}</h2>
+    <p className="text-sm text-gray-600 mb-2">Category: {tip.category}</p>
+
+    <Link
+      to={`/tipdetails/${_id}`}
+      className="btn btn-outline btn-sm rounded-full mb-3"
+    >
+      See More
+    </Link>
+
+    {/* Like Section */}
+    <div className="flex items-center gap-4 mt-2">
+      <button
+        onClick={toggleLike}
+        className="text-2xl hover:scale-110 transition-transform"
+      >
+        {like ? "❤️" : "🤍"}
+      </button>
+      <p className="text-sm text-gray-700">Total Likes: {likes}</p>
+    </div>
+  </div>
+</div>
+
     </>
   );
 };

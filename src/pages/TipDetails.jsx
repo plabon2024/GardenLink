@@ -47,39 +47,56 @@ const TipDetails = () => {
       .then((res) => res.json())
       .then(() => {
         setLike(!like);
-        setLikes(!like ? likes + 1 : likes - 1); 
+        setLikes(!like ? likes + 1 : likes - 1);
       });
   };
 
   return (
-    <div>
-      <div className="mx-auto flex justify-center items-center">
-        <div className="p-5 backdrop-blur-md border border-black  bg-green-50 my-5 shadow-lg rounded-xl overflow-hidden max-w-fit">
-          <img src={image} alt={title} className="w-full h-64 object-contain" />
+    <div className=" py-10 px-4 bg-base-100 mt-24">
+  <div className="max-w-3xl mx-auto bg-green-50/90 backdrop-blur-md border border-gray-200 shadow-xl rounded-2xl overflow-hidden">
+    {/* Image */}
+    <img
+      src={image}
+      alt={title}
+      className="w-full h-64 object-cover object-center rounded-t-2xl"
+    />
 
-          <div className="p-6 space-y-4 text-info">
-            <h1 className="text-3xl font-bold">{title}</h1>
+    {/* Content */}
+    <div className="p-6 text-gray-800 space-y-5">
+      <h1 className="text-3xl font-bold text-primary text-center">{title}</h1>
 
-            <div className="flex flex-wrap gap-4 text-lg">
-              <span>Category: {category}</span>
-              <span>Type: {type}</span>
-              <span>Difficulty: {difficulty}</span>
-            </div>
+      {/* Meta info */}
+      <div className="flex flex-wrap justify-center gap-6 text-sm font-medium text-gray-600">
+        <span className="bg-primary/10 px-3 py-1 rounded-full">
+          Category: {category}
+        </span>
+        <span className="bg-primary/10 px-3 py-1 rounded-full">
+          Type: {type}
+        </span>
+        <span className="bg-primary/10 px-3 py-1 rounded-full">
+          Difficulty: {difficulty}
+        </span>
+      </div>
 
-            <p className="text-base leading-relaxed">{description}</p>
-            <div className="flex items-center">
-              <button
-                onClick={toggleLike}
-                className="btn border-none btn-ghost btn-xl"
-              >
-                {like ? "❤️" : "🤍"}
-              </button>
-              <p>Total like: {likes}</p>
-            </div>
-          </div>
-        </div>
+      {/* Description */}
+      <p className="text-base leading-relaxed text-justify">
+        {description}
+      </p>
+
+      {/* Likes */}
+      <div className="flex items-center justify-center gap-4 pt-2">
+        <button
+          onClick={toggleLike}
+          className="text-3xl transition-transform hover:scale-110"
+        >
+          {like ? "❤️" : "🤍"}
+        </button>
+        <p className="text-sm text-gray-700 font-medium">Total Likes: {likes}</p>
       </div>
     </div>
+  </div>
+</div>
+
   );
 };
 

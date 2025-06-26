@@ -55,7 +55,7 @@ const UpdateMytip = () => {
   };
   return (
     <div>
-      <h1 className="text-center text-3xl font-bold my-5">
+      <h1 className="text-center text-3xl font-bold my-5 mt-28">
         <Typewriter
           cursor
           cursorBlinking

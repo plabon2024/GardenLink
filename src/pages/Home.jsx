@@ -6,6 +6,8 @@ import Featured from "../components/Featured";
 import Faq from "../components/Faq";
 
 const Home = () => {
+  window.scrollTo(0,0);
+
   return (
     <>
       <Banner></Banner>

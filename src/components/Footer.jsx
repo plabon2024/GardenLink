@@ -8,7 +8,7 @@ import { RiTwitterXFill } from "react-icons/ri";
 const Footer = () => {
   return (
     <>
-      <footer className="bg-green-50 text-green-900 py-16 px-5 md:px-0">
+      <footer className=" text-neutral py-16 px-5 md:px-0">
         <div className="container mx-auto flex flex-col lg:flex-row justify-between gap-10">
           {/* Left: Branding and Social */}
           <div className="flex flex-col gap-6">
