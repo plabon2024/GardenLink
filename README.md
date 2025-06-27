@@ -2,6 +2,8 @@
 
 Live Site: [https://gardening-community-4f424.web.app/](https://gardening-community-4f424.web.app/)
 
+
+
 ## 🌟 Features
 
 - 🌱 **User-Friendly Interface**: Clean, modern UI with TailwindCSS and DaisyUI for a seamless user experience.

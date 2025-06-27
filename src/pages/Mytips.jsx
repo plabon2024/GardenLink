@@ -156,13 +156,13 @@ const Mytips = () => {
                 <div className="flex justify-between mt-3">
                   <Link
                     to={`/tipdetails/${item._id}`}
-                    className="btn btn-sm btn-info"
+                    className="btn btn-sm btn-primary"
                   >
                     <FaEye size={15} />
                   </Link>
                   <Link
                     to={`/updatemytip/${item._id}`}
-                    className="btn btn-sm btn-info"
+                    className="btn btn-sm btn-primary"
                   >
                     <FaPen size={15} />
                   </Link>

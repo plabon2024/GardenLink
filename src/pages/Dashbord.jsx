@@ -91,7 +91,7 @@ const Dashboard = () => {
     </div>
     
     {/* Dynamic Content Goes Here */}
-    <div className="bg-white shadow-md rounded-xl p-6">
+    <div className=" shadow-md rounded-xl p-6">
       <Outlet />
     </div>
   </div>
