@@ -27,7 +27,9 @@ const AuthProvider = ({ children }) => {
         setApps(data);
       });
   }, [user]);
-
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
   const uninstallApp = (appId) => {
     setInstalledApps((prev) => prev.filter((item) => item.id !== appId));
   };
@@ -72,7 +74,7 @@ const AuthProvider = ({ children }) => {
     reviewsable,
     setReviewsable,
     apps,
-    setApps,
+    setApps,theme, setTheme
   };
 
   return (

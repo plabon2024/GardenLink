@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router";
+import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthProvider";
-import toast from "daisyui/components/toast";
-import { Tooltip } from "react-tooltip";
+// import toast from "daisyui/components/toast";
+// import { Tooltip } from "react-tooltip";
 import Swal from "sweetalert2";
+import { CiLogout } from "react-icons/ci";
 
 const Header = () => {
-  const { user, signOutUser } = useContext(AuthContext);
+  const { user, signOutUser, theme, setTheme } = useContext(AuthContext);
   const location = useLocation();
   let navigate = useNavigate();
   const handlesignOutUser = () => {
@@ -22,10 +23,6 @@ const Header = () => {
       })
       .catch(() => {});
   };
-
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-  );
 
   const handleToggle = (e) => {
     if (e.target.checked) {
@@ -83,6 +80,7 @@ const Header = () => {
                   Explore Gardeners{" "}
                 </NavLink>
               </li>
+
               <li>
                 <NavLink
                   to="/alltips"
@@ -130,6 +128,30 @@ const Header = () => {
                     >
                       My Tips{" "}
                     </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard"
+                      className="btn hover:bg-neutral hover:text-primary"
+                    >
+                    Dashboard
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/mytips"
+                      className="btn hover:bg-neutral hover:text-primary"
+                    >
+                      My Tips{" "}
+                    </NavLink>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handlesignOutUser}
+                      className="btn bg-red-500 hover:bg-neutral hover:text-primary bg-black"
+                    >
+                      Log Out
+                    </button>
                   </li>
                 </>
               )}
@@ -203,58 +225,20 @@ const Header = () => {
                     Share a Garden Tip
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    to="/dashboard"
+                    className=" btn outline-none  hover:bg-neutral hover:text-primary hover:border-none rounded-sm"
+                  >
+                    Dashbordp
+                  </NavLink>
+                </li>
               </>
             )}
           </ul>
         </div>
-        <div className="navbar-end">
-          {!user ? (
-            <NavLink to="/login" className="btn btn-ghost">
-              Login
-            </NavLink>
-          ) : (
-            <div
-              className="dropdown dropdown-left "
-              data-tooltip-id="my-tooltip"
-            >
-              <div
-                tabIndex={0}
-                role="button"
-             
-              >
-                <div className="avatar">
-                  <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                    <img
-                      referrerPolicy="no-referrer"
-                      alt="Profile Photo"
-                      src={
-                        user?.photoURL
-                          ? user.photoURL
-                          : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                      }
-                    />
-                  </div>
 
-                  <Tooltip
-                    id="my-tooltip"
-                    className="z-50 bg-slate-400 "
-                    content={user.displayName}
-                    place="bottom-start"
-                  />
-                </div>
-              </div>
-
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content  shadow w-fit"
-              >
-                <li className="btn outline-none border-none    rounded-sm">
-                  <button onClick={handlesignOutUser}>Logout</button>
-                </li>
-              </ul>
-            </div>
-          )}
-
+        <div className="navbar-end flex items-center gap-4">
           <label className="swap swap-rotate mx-5">
             {/* this hidden checkbox controls the state */}
             <input
@@ -281,6 +265,37 @@ const Header = () => {
               <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
             </svg>
           </label>
+          {!user ? (
+            <NavLink to="/login" className="btn btn-ghost">
+              Login
+            </NavLink>
+          ) : (
+            <>
+              <Link to={"/dashbord"}>
+                <div className="avatar">
+                  <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <img
+                      referrerPolicy="no-referrer"
+                      alt="Profile"
+                      src={
+                        user?.photoURL
+                          ? user.photoURL
+                          : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                      }
+                    />
+                  </div>
+                </div>
+              </Link>
+
+              <button
+                onClick={handlesignOutUser}
+                className="btn btn-ghost tooltip hidden lg:block"
+                data-tip="Logout"
+              >
+                <CiLogout className="text-2xl" />
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

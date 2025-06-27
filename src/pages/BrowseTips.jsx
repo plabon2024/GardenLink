@@ -6,11 +6,13 @@ const BrowseTips = () => {
   const [alltips, setAlltips] = useState([]);
   const [difficultyFilter, setDifficultyFilter] = useState("All");
   const [viewMode, setViewMode] = useState("card");
+  const [loading,setLoading]=useState(true)
   useEffect(() => {
     fetch(`${import.meta.env.VITE_baseurl}/alltip`)
       .then((res) => res.json())
       .then((data) => {
         setAlltips(data);
+        setLoading(false)
       });
   }, []);
 
@@ -18,6 +20,13 @@ const BrowseTips = () => {
     difficultyFilter === "All" ? true : tip.difficulty === difficultyFilter
   );
 
+  if (loading) {
+    return (
+       <div className="min-h-screen flex justify-center items-center">
+          <span className="loading loading-spinner loading-xl"></span>
+        </div>
+    );
+  }
   return (
     <div className="container mx-auto px-4 py-8 mt-28">
       {/* Controls */}
@@ -35,13 +44,17 @@ const BrowseTips = () => {
 
         <div className="flex gap-2">
           <button
-            className={`btn btn-sm ${viewMode === "table" ? "btn-primary" : "btn-outline"}`}
+            className={`btn btn-sm ${
+              viewMode === "table" ? "btn-primary" : "btn-outline"
+            }`}
             onClick={() => setViewMode("table")}
           >
             <FaList />
           </button>
           <button
-            className={`btn btn-sm ${viewMode === "card" ? "btn-primary" : "btn-outline"}`}
+            className={`btn btn-sm ${
+              viewMode === "card" ? "btn-primary" : "btn-outline"
+            }`}
             onClick={() => setViewMode("card")}
           >
             <FaThLarge />
@@ -103,8 +116,13 @@ const BrowseTips = () => {
               <div className="space-y-2">
                 <h2 className="text-xl font-bold">{item.title}</h2>
                 <p className="text-sm">Category: {item.category}</p>
-                <p className="text-sm font-semibold">Difficulty: {item.difficulty}</p>
-                <Link to={`/tipdetails/${item._id}`} className="btn btn-sm btn-outline w-fit">
+                <p className="text-sm font-semibold">
+                  Difficulty: {item.difficulty}
+                </p>
+                <Link
+                  to={`/tipdetails/${item._id}`}
+                  className="btn btn-sm btn-outline w-fit"
+                >
                   View Details
                 </Link>
               </div>

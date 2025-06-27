@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from "react";
 
 const ExploreGardeners = () => {
-  const [allgardeners, setAllgardeners] = useState([]);
+ const [allgardeners, setAllgardeners] = useState([]);
+  const [loading, setLoading] = useState(true); // New loading state
+
   useEffect(() => {
+    setLoading(true);
     fetch(`${import.meta.env.VITE_baseurl}/allgardeners`)
       .then((res) => res.json())
       .then((data) => {
         setAllgardeners(data);
+        setLoading(false);
       });
   }, []);
+
+  if (loading) {
+    return (
+       <div className="min-h-screen flex justify-center items-center">
+          <span className="loading loading-spinner loading-xl"></span>
+        </div>
+    );
+  }
   return (
     <div className="container mx-auto mt-28 px-4 flex flex-wrap gap-8 justify-center">
       {allgardeners.map((gardener, index) => (

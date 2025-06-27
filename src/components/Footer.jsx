@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BsFacebook } from "react-icons/bs";
 import { FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 import { RiTwitterXFill } from "react-icons/ri";
+import { AuthContext } from "../context/AuthProvider";
+import { Link } from "react-router";
 
 const Footer = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <>
       <footer className=" text-neutral py-16 px-5 md:px-0">
@@ -84,24 +88,40 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Right: Quick Links */}
           <div className="flex flex-col gap-4">
             <h2 className="text-xl font-semibold mb-2">Quick Links</h2>
-            <a href="/" className="hover:underline">
-              About Us
-            </a>
-            <a href="/" className="hover:underline">
-              Gardening Events
-            </a>
-            <a href="/" className="hover:underline">
-              Community Guidelines
-            </a>
-            <a href="/" className="hover:underline">
-              Terms & Conditions
-            </a>
-            <a href="/" className="hover:underline">
-              Privacy Policy
-            </a>
+
+            {/* Common links for all users */}
+            <Link to="/" className="hover:underline">
+              Home
+            </Link>
+            <Link to="/allgardeners" className="hover:underline">
+              Explore Gardeners
+            </Link>
+            <Link to="/alltips" className="hover:underline">
+              Browse Tips
+            </Link>
+
+            {/* Conditional links based on user authentication */}
+            {!user ? (
+              <>
+                <Link to="/signup" className="hover:underline">
+                  Signup
+                </Link>
+                <Link to="/login" className="hover:underline">
+                  Login
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/mytips" className="hover:underline">
+                  My Tips
+                </Link>
+                <Link to="/tip" className="hover:underline">
+                  Share a Garden Tip
+                </Link>
+              </>
+            )}
           </div>
         </div>
 

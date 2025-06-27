@@ -3,7 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Singnup from "../pages/Signup";
-// import Gardeners from "../components/Gardeners";
+
 
 import PrivateRoute from "../components/PrivateRoute";
 import ExploreGardeners from "../pages/ExploreGardeners";
@@ -13,6 +13,9 @@ import Mytips from "../pages/Mytips";
 import UpdateMytip from "../pages/UpdateMytip";
 import Errorpage from "../pages/Errorpage";
 import Tipinput from "../pages/Tipinput";
+import Dashbord from "../pages/Dashbord";
+import Dashbordcards from "../pages/Dashbord/Dashbordcards";
+
 
 const router = createBrowserRouter([
   {
@@ -61,11 +64,25 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      
-  {
-    path: "/*",
-    Component: Errorpage,
+
+      {
+        path: "/*",
+        Component: Errorpage,
+      },
+    ],
   },
+  {
+    path: "/",
+    element: (
+      <PrivateRoute>
+        <Dashbord></Dashbord>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard",
+        Component: Dashbordcards,
+      },
     ],
   },
 ]);
